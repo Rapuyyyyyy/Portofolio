@@ -1,0 +1,385 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter untuk tampilan modern */
+    background: linear-gradient(to bottom, #0D1A2E, #1A365D); /* Gradien biru gelap yang lebih elegan */
+    color: #E0E7FF; /* Warna teks lebih terang untuk kontras */
+    line-height: 1.7;
+}
+
+a {
+    color: #63B3ED; /* Biru cerah untuk tautan */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #90CDF4; /* Warna lebih terang saat hover */
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px; /* Lebar maksimal diperbesar sedikit */
+    margin: auto;
+    padding: 2rem 0;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: rgba(13, 26, 46, 0.95); /* Warna navbar sedikit lebih gelap */
+    backdrop-filter: blur(10px); /* Efek blur yang lebih kuat */
+    padding: 0.8rem 0;
+    color: white;
+    z-index: 1000; /* Indeks z lebih tinggi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Bayangan lebih jelas */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; /* Padding horizontal untuk container navbar */
+}
+
+.navbar h1 {
+    font-size: 1.8rem; /* Ukuran font judul navbar */
+    font-weight: 700;
+    color: #90CDF4; /* Warna judul navbar */
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 2.2rem; /* Ukuran ikon toggle */
+    cursor: pointer;
+    color: #63B3ED;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem; /* Jarak antar menu lebih luas */
+}
+
+.navbar-menu li a {
+    color: #E0E7FF; /* Warna teks menu */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar-menu li a:hover {
+    background-color: #1A365D; /* Background saat hover */
+    color: #90CDF4; /* Warna teks saat hover */
+    text-decoration: none;
+    transform: translateY(-2px); /* Efek naik sedikit saat hover */
+}
+
+/* Responsive Navbar (Mobile Drawer Menu) */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        right: -300px; /* Awalnya tersembunyi di luar layar */
+        height: 100%;
+        width: 280px; /* Lebar menu drawer */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #0D1A2E; /* Warna background menu drawer */
+        z-index: 1001;
+        padding: 2rem;
+        gap: 2.5rem;
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Transisi lebih dinamis */
+        box-shadow: -8px 0 25px rgba(0,0,0,0.6);
+    }
+
+    .navbar-menu.active {
+        right: 0;
+    }
+
+    .navbar-menu li a {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Hero Section */
+.hero {
+    height: 70vh; /* Ketinggian hero section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('assets/bg.jpg') center/cover no-repeat;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden; /* Memastikan overlay tidak keluar */
+}
+
+.hero .overlay {
+    background: rgba(0, 0, 0, 0.6); /* Overlay yang lebih transparan */
+    padding: 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Bayangan untuk overlay */
+    animation: fadeIn 1.5s ease-out; /* Animasi fade-in */
+}
+
+.hero img {
+    width: 200px; /* Ukuran gambar profil lebih besar */
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    border: 5px solid #63B3ED; /* Border warna biru cerah */
+    object-fit: cover;
+    box-shadow: 0 0 0 8px rgba(99, 179, 237, 0.3); /* Efek cincin di sekitar gambar */
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #90CDF4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Section Styles */
+.section {
+    margin-top: 5rem; /* Jarak antar section lebih besar */
+    scroll-margin-top: 100px;
+    padding: 2rem 0; /* Padding vertikal untuk setiap section */
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #90CDF4;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #63B3ED;
+    border-radius: 2px;
+}
+
+/* About Section */
+#tentang p {
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Download Button */
+.btn-download {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.9rem 2rem;
+    background-color: #63B3ED; /* Warna tombol download */
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: block; /* Agar tombol berada di tengah */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-download:hover {
+    background-color: #3182CE; /* Warna lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Education Section */
+#pendidikan ul {
+    list-style: none;
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+#pendidikan li {
+    background-color: #1A365D; /* Background item pendidikan */
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid #63B3ED; /* Border di sisi kiri */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#pendidikan li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#pendidikan strong {
+    color: #90CDF4;
+    font-size: 1.15rem;
+}
+
+/* Gallery (Organization, Committee, Projects) */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ukuran kartu disesuaikan */
+    gap: 2rem; /* Jarak antar kartu */
+    margin-top: 2.5rem;
+}
+
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 400px; /* Ketinggian minimum item gallery */
+    background-color: #1A365D; /* Warna background item gallery */
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Menghindari overflow teks */
+    position: relative; /* Untuk hover effect desc */
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 220px; /* Ketinggian kartu gambar */
+    background-color: #0D1A2E; /* Background kartu saat gambar tidak ada */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.gallery-card:hover {
+    transform: scale(1.03); /* Sedikit membesar saat hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.gallery-card img.main,
+.gallery-card img.hover {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    border-radius: 12px; /* Border radius pada gambar */
+}
+
+.gallery-card img.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.gallery-card:hover img.main {
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.gallery-card:hover img.hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.gallery-desc {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #C1D8F0; /* Warna teks deskripsi */
+    height: auto; /* Otomatis menyesuaikan tinggi */
+    overflow: visible; /* Tampilkan seluruh teks */
+    text-overflow: clip; /* Tidak ada ellipsis */
+    flex-grow: 1; /* Memungkinkan deskripsi mengisi ruang */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-desc strong {
+    color: #90CDF4;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Projects Section specific styling */
+#projects .gallery-item {
+    text-align: left; /* Teks proyek rata kiri */
+    align-items: flex-start;
+}
+
+#projects .gallery-item .gallery-desc {
+    text-align: left;
+    padding-top: 0.5rem;
+}
+
+
+/* Contact Section */
+#kontak p {
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+#kontak a {
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #0D1A2E; /* Warna background footer */
+    color: #8C99B2; /* Warna teks footer */
+    margin-top: 5rem;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3); /* Bayangan di atas footer */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
